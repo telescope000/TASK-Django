@@ -38,7 +38,7 @@ def task(request):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     # 為每個任務獲取留言
     for task in my_tasks:
@@ -53,7 +53,7 @@ def show_share(request):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     show_share = {}
     for shared_task in sharedTasks:
@@ -85,7 +85,7 @@ def add_task(request):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     if request.method == 'POST':
         form = TaskForm(request.POST)
@@ -125,7 +125,7 @@ def edit_task(request, id):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     previous_url = request.META.get('HTTP_REFERER')
 
@@ -150,9 +150,8 @@ def share_task(request,id):
     tasks = Task.objects.filter(user_id=user)
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
-    print(share_task)
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     task = Task.objects.get(id=id)
     if request.method == 'POST':
@@ -191,9 +190,8 @@ def comment_task(request, id):
     tasks = Task.objects.filter(user_id=user)
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
-    print(share_task)
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
     task = Task.objects.get(id=id)
 
     previous_url = request.META.get('HTTP_REFERER')
@@ -221,7 +219,7 @@ def delete_task(request, id):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     previous_url = request.META.get('HTTP_REFERER')
 
@@ -237,7 +235,7 @@ def show_log(request, id):
     # 取得共享的任務
     sharedTasks = SharedTask.objects.filter(Q(user=user) | Q(task__user_id=user))
     # 排除共享任務後的我的任務
-    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('id', flat=True))
+    my_tasks = tasks.exclude(id__in=sharedTasks.values_list('task__id', flat=True))
 
     task = Task.objects.get(id=id)
     history = ActivityLog.objects.filter(task=task)
