@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="add_task">
+        <h1>{{action}}任務</h1>
+        {% if error_message %}
+        <p>{{error_message}}</p>
+        {% endif %}
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- 渲染表單 -->
+            <button type="submit" class="task-button">{{action}}任務</button>
+        </form>
+        <a href="/task/">返回任務列表</a>
+    </div>
+
+{% endblock%}

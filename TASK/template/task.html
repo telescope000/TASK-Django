@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    {% for task in my_tasks %}
+    <div class="task">
+        <h3></h3>
+        <div class="task_line">
+            <button class="task-button" onclick="toggleDetails({{ task.id }})">{{ task.title }}</button>
+            <a class="icon-link" href="/task/edit/{{task.id}}"><i class="fa fa-edit"></i> 編輯</a>
+            <a class="icon-link" href="/task/delete/{{task.id}}" onclick="return confirm('確定要刪除這個任務嗎？');"><i class="fa fa-trash"></i> 刪除</a>
+            <a class="icon-link" href="/task/share/{{task.id}}"><i class="fa fa-share"></i> 共享</a>
+            <a class="icon-link" href="/task/comment/{{task.id}}"><i class="fa fa-comment"></i> 留言</a>
+            <a class="icon-link" href="/task/show_log/{{task.id}}"><i class="fas fa-history"></i> 變更歷史</a>
+        </div>
+        <div id="details-{{ task.id }}" class="task-details">
+            <p>任務: {{task.title}}</p>
+            <p>描述: {{ task.description }}</p>
+            <p>截止日期: {{ task.due_date }}</p>
+            <p>優先權: {{ task.priority }}</p>
+            <p>狀態: {{ task.status }}</p>
+            <hr>
+            <h4>留言:</h4>
+            {% for comment in task.comments %}
+                <div class="comment">
+                    <p><strong>{{ comment.user.username }}:</strong> {{ comment.content }} <em>({{ comment.created_at|date:"Y-m-d H:i" }})</em></p>
+                </div>
+            {% empty %}
+                <p>沒有留言。</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% empty %}
+    <p>沒有任務</p>
+    {% endfor %}
+</div>
+
+{% endblock %}

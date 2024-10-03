@@ -1,0 +1,79 @@
+.user-container {
+    max-width: 400px;          /* 最大寬度 */
+    height: 95%;
+    margin: 0 auto;            /* 居中 */
+    padding: 20px;             /* 內邊距 */
+    border: 1px solid #ccc;    /* 邊框*/
+    border-radius: 8px;        /* 邊框圓角 */
+    background-color: #f9f9f9; /* 背景顏色 */
+}
+
+form p {
+    display: flex;              /* 使用 Flexbox */
+    flex-direction: column;     /* 垂直排列 */
+    margin-bottom: 20px;        /* 間距 */
+}
+
+
+label {
+    margin-bottom: 5px;        /*標籤與輸入框的間距 */
+}
+
+/* 輸入框 */
+input[type="text"],
+input[type="password"] {
+    padding: 10px;             
+    border: 1px solid #ccc;    
+    border-radius: 4px;        /* 邊框圓角 */
+}
+
+
+.helptext {
+    font-size: 12px;           
+    color: #666;               
+    margin-top: 5px;           
+    list-style-type: none;     
+    padding-left: 0;   
+}
+
+
+.btn {
+    padding: 10px;             
+    border: none;              
+    border-radius: 4px;        
+    background-color: #4CAF50; 
+    color: white;             
+    cursor: pointer;           
+    margin-top: 10px;          
+}
+
+
+.btn:hover {
+    background-color: #45a049;
+}
+
+body {
+    min-height: 100vh; 
+    height: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    margin: 0; 
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/logo.png');
+    background-repeat: repeat;
+    background-size: 5%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+body {
+    background: linear-gradient(to right, rgba(240, 244, 195, 1), rgba(165, 214, 167, 1)); /* 背景漸變 */
+}

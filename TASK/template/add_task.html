@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <div class="add_task">
+        <h1>新增任務</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}  <!-- 渲染表單 -->
+            <button type="submit" class="task-button">新增任務</button>
+        </form>
+        <a href="{% url 'task' %}">返回任務列表</a>
+    </div>
+
+{% endblock%}

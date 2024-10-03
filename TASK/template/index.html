@@ -1,0 +1,20 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+    <head></head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>TASK</title>
+        <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    </head>
+    <body>
+        <div class="container">
+            <img src="{% static 'images/logo.png' %}">
+            <div class="button-group"></div>
+                <button class="login-button"><a href='/login/'>登入</a></button>
+                <button class="register-button"><a href='/register/'>註冊</a></button>
+            </div>
+        </div>
+    </body>
+</html>

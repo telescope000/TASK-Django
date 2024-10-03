@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div>
+    {% if history %}
+    <h3>{{ task.title }}</h3>
+    {% endif %}
+    {% for task in history %}
+    <div class="task">
+         <p>{{task.user.username}}:{{task.action}}任務 <em>({{ task.action_time|date:"Y-m-d H:i" }})</em></p>
+    </div>
+    {% empty %}
+    <p>沒有歷史</p>
+    {% endfor %}
+    <a href="{{ previous_url }}" class="task-button">返回</a>
+</div>
+
+{% endblock %}

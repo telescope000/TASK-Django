@@ -1,0 +1,223 @@
+body {
+    height: auto;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('../images/logo.png');
+    background-repeat: repeat;
+    background-size: 5%;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+
+body {
+    background: linear-gradient(to right, rgba(240, 244, 195, 1), rgba(165, 214, 167, 1)); /* 背景漸變 */
+}
+
+/* 背景與主色 */
+:root {
+    --dark-green: #1c3720;
+    --light-green: #a5d6a7;
+    --green : #70aa72;
+    --dark-gray: #333333;
+    --white: #ffffff;
+    --gray: #e0e0e0;
+}
+
+h1{
+    color: var( --dark-green);
+}
+
+h2 {
+    color: var(--light-green);
+}
+
+a {
+    color: var(--white);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+
+.container {
+    display: flex;
+    height: 97vh;
+    border-radius: 20px;
+}
+
+/* 左側欄位 */
+.sidebar {
+    width: 20%;
+    background-color: var(--dark-green);
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+}
+
+.sidebar ul li a {
+    padding: 10px;
+    display: block;
+    background-color: var(--green);
+    border-radius: 5px;
+}
+
+.sidebar ul li a:hover {
+    background-color: var(--light-green);
+    color: var(--dark-gray);
+}
+
+/* 右側內容區 */
+.main-content {
+    width: 80%;
+    background-color: var(--gray);
+    padding: 40px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+.main-content h1 {
+    border-bottom: 2px solid var(--dark-green);
+    padding-bottom: 10px;
+}
+
+.main-content p {
+    margin: 20px 0;
+    color: var(--dark-gray);
+}
+
+.task_line{
+    width: 100%;
+}
+
+.task-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--green);
+    color: var(--white);
+    cursor: pointer;
+    transition: background-color 0.3s;
+    font-size: 16px; /* 增加字體大小 */
+}
+
+.task-button:hover {
+    background-color: var(--light-green);
+}
+
+/* 圖標鏈接樣式 */
+.icon-link {
+    display: inline-flex;
+    align-items: center; /* 垂直置中 */
+    margin-left: 10px; /* 添加間距 */
+    color: var(--dark-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    font-size: 14px; /* 字體大小 */
+}
+
+.icon-link:hover {
+    color: var(--green);
+}
+
+/* 圖標樣式 */
+.icon-link i {
+    margin-right: 5px; /* 圖標和文本之間的間距 */
+}
+
+/* 任務詳情的樣式 */
+.task-details {
+    display: none;
+    margin-top: 10px;
+    padding: 15px; /* 增加內邊距 */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px; /* 圓角 */
+    text-align: left;
+}
+
+.add_task {
+    background-color: #f9f9f9; /* 背景顏色 */
+    border: 1px solid #ccc; /* 邊框 */
+    border-radius: 8px; /* 圓角 */
+    padding: 20px; /* 內邊距 */
+    max-width: 500px; /* 最大寬度 */
+    margin: 20px auto; /* 上下邊距*/
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /*陰影 */
+    text-align: left;
+}
+
+.add_task h1 {
+    font-size: 24px; 
+    color: #333; 
+    margin-bottom: 15px; 
+}
+
+.add_task form {
+    display: flex; 
+    flex-direction: column; 
+}
+
+.add_task button.task-button {
+    background-color: #28a745; 
+    color: white;
+    border: none; 
+    padding: 10px 15px; 
+    border-radius: 5px; 
+    cursor: pointer;
+    transition: background-color 0.3s; 
+}
+
+.add_task button.task-button:hover {
+    background-color: #218838;
+}
+
+.add_task a {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none; 
+    color: #007bff; 
+}
+
+.add_task a:hover {
+    text-decoration: underline; 
+}
+
+.logout-link {
+    color: var(--white);
+    background-color: #66bd7a;
+    text-decoration: none; 
+    padding: 10px;
+    border-radius: 5px; 
+    width: 100%;
+}
+
+.logout-link:hover {
+    background-color: var(--light-green); 
+    color: var(--dark-gray);
+}

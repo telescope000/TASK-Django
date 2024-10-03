@@ -1,0 +1,58 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TASK</title>
+    <link rel="stylesheet" href="{% static 'css/task.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> <!-- Font Awesome -->
+    <script>
+        // 切換顯示任務詳情
+        function toggleDetails(id) {
+            var details = document.getElementById('details-' + id);
+            if (details.style.display === 'none' || details.style.display === '') {
+                details.style.display = 'block';
+            } else {
+                details.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- 左側欄 -->
+        <nav class="sidebar">
+            <h2>我的任務</h2>
+            <ul>
+                <li><a href="/task/">我的任務</a></li>
+            </ul>
+
+            <h2>共享的任務</h2>
+            <ul>
+                {% if sharedTasks %}
+                <li><a href="/task/show_share/">共享任務</a></li>
+                {% else %}
+                <li>沒有共享任務</li>
+                {% endif %}
+            </ul>
+
+            <h2>{{user.username}}</h2>
+            <ul>
+                <form method="post" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit" class="logout-link">登出</button>
+                </form></li>
+            </ul>
+
+        </nav>
+
+        <!-- 右側任務列表 -->
+        <section class="main-content">
+            <h1>任務列表<a href="{% url 'add_task' %}" class="icon-link"><i class="fas fa-plus"></i> 新增</a></h1>
+            {% block content %}
+            {% endblock %}
+        </section>
+    </div>
+</body>
+</html>
